@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+            rel="stylesheet">
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        .button_search {
+            right: 0;
+            top: 0
+        }
+
+        .width_100 {
+            width: 100%
+        }
+
+        .width_70 {
+            width: 70%
+        }
+
+        .slide_button_letf,
+        .slide_button_right {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .slide_button_letf {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .slide_button_right {
+            top: 50%;
+            transform: translateY(-50%);
+            right: 1%;
+
+        }
+
+        .none {
+            display: none;
+        }
+
+        .item-hover {
+            position: relative;
+            transition: top ease 0.5s;
+            top: 0;
+            border-radius: 3%;
+        }
+
+        .item-hover:hover {
+            top: -10px
+        }
+
+        p {
+            margin: 0;
+        }
+      .login-form, .register-form, .gio-hang{
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+       background-color: rgba(19, 16, 16, 0.5);
+       display: none;
+      }
+      .content-login-form, .content-register-form{
+        background-color: aliceblue;
+        max-width: 500px;
+        margin: auto;
+      }
+      .content-giohang{
+        background-color: aliceblue;
+      }
+      .btn-login, .btn-register, .button-giohang{
+        top:0;
+        right:0;
+      }
+      .openmenu{
+        display: none;
+      }
+      .block{
+        display: block;
+      }
+    </style>
+    </head>
+
+    <body>
+        <div class="container-fluid bg-warning">
+            <div class="container-sm ">
+                <div class="navbar ">
+                    <div class="d-flex d-none d-lg-flex">
+                        <div class="logo bg-info">
+                            <div class="p-2 mx-sm-5">
+                                tran huy tu nam
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-grow-1 justify-content-around">
+                        <form class="position-relative width_70">
+                            <input type="text" placeholder="search"
+                                class="input_search form-control">
+                            <button type="button" class="btn btn-success
+                                position-absolute button_search">tim</button>
+                        </form>
+                        <button onclick="document.querySelector('.gio-hang').style.display='block'" class="btn d-none d-lg-block btn-info" type="button">gio hang</button>
+                        <button onclick="document.querySelector('.openmenu').classList.toggle('block')" class="btn btn-info d-block d-lg-none" type="button">menu</button>
+                    </div>
+                    <div class="d-flex d-none d-lg-flex">
+                        <button class="btn btn-info  mx-1 mx-lg-2"
+                            onclick="document.querySelector('.login-form').style.display='block'">dang
+                            nhap</button>
+                        <button class="btn btn-info mx-1 mx-lg-2"
+                            onclick="document.querySelector('.register-form').style.display='block'">dang
+                            ky</button>
+                    </div>
+
+                </div>
+                <div class="container openmenu d-lg-none">
+                    <div onclick="document.querySelector('.login-form').style.display='block'" class="item-menu p-2">đăng nhập</div>
+                    <div onclick="document.querySelector('.register-form').style.display='block'" class="item-menu p-2" class="item-menu p-2">đăng kí</div>
+                    <div onclick="document.querySelector('.gio-hang').style.display='block'" class="item-menu p-2" class="item-menu p-2">giỏ hàng</div>
+                </div>
+            </div>
+        </div>
+        <div class="container slide_button mt-3 position-relative">
+            <div class="myslide ">
+                <img class="img-fluid width_100"
+                    src="https://cdn.tgdd.vn/2022/08/banner/720-220-720x220-145.png"
+                    alt="anh">
+            </div>
+            <div class="myslide none">
+                <img class="img-fluid width_100"
+                    src="https://cdn.tgdd.vn/2022/09/banner/720-220-720x220-4.png"
+                    alt="anh">
+            </div>
+            <div class="myslide none">
+                <img class="img-fluid width_100"
+                    src="https://cdn.tgdd.vn/2022/09/banner/flip4-720-220-720x220-4.png"
+                    alt="anh">
+            </div>
+            <div class="myslide none">
+                <img class="img-fluid width_100"
+                    src="https://cdn.tgdd.vn/2022/09/banner/w5-720-220-720x220-1.png"
+                    alt="anh">
+            </div>
+            <div class="myslide none">
+                <img class="img-fluid width_100"
+                    src="https://cdn.tgdd.vn/2022/09/banner/reno8-720-220-720x220.png"
+                    alt="anh">
+            </div>
+            <span onclick="abc(-1)" class="slide_button_letf position-absolute">{=</span>
+            <span onclick="abc(1)" class="slide_button_right position-absolute">=}</span>
+        </div>
+        <div class="container my-3 bg-danger">
+            <div class="navbar">
+                <div class="flex-grow-1 text-center">
+                    <button type="button" class="btn btn-info px-lg-5 px-sm-2
+                        px-1 ">
+                        <div class="d-flex align-items-center">
+                            <img width="30"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/833px-Apple_logo_black.svg.png"
+                                alt="iphone">
+                            <span class="ms-2">ipnone</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="flex-grow-1 text-center">
+                    <button type="button" class="btn btn-info px-lg-5 px-sm-2
+                        px-1 ">
+                        <div class="d-flex align-items-center">
+                            <img width="30"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/833px-Apple_logo_black.svg.png"
+                                alt="iphone">
+                            <span class="ms-2">ipnone</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="flex-grow-1 text-center">
+                    <button type="button" class="btn btn-info px-lg-5 px-sm-2
+                        px-1 ">
+                        <div class="d-flex align-items-center">
+                            <img width="30"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/833px-Apple_logo_black.svg.png"
+                                alt="iphone">
+                            <span class="ms-2">ipnone</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="flex-grow-1 text-center">
+                    <button type="button" class="btn btn-info px-lg-5 px-sm-2
+                        px-1 ">
+                        <div class="d-flex align-items-center">
+                            <img width="30"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/833px-Apple_logo_black.svg.png"
+                                alt="iphone">
+                            <span class="ms-2">ipnone</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+     
+
+        <div class="container-fluid p-0 bg-secondary mt-5 border-bottom">
+            <h3 class="text-center">cac san pham noi bat</h3>
+            <div class="row m-0 px-lg-5 px-sm-0">
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2 ">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="container-fluid p-0 bg-secondary mt-5 border-bottom">
+            <h3 class="text-center">cac san pham moi</h3>
+            <div class="row m-0 px-lg-5 px-sm-0">
+                <div class="col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2 ">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-2 col-sm-3 col-4 text-center bg-white">
+                    <div class="p-2">
+                        <div class="shadow-lg item-hover">
+                            <div class="p-2">
+                                <a href="#"><img
+                                        src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-tim-1-600x600.jpg"
+                                        class="img-fluid" alt="item">
+                                </a>
+                                <p>te san pham</p>
+                                <p>gia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+        <div class="footer bg-info">
+            <div class="p-5">
+                <div class="row m-0 text-center">
+                    <div class="col-sm-3">
+                        <p>thông in bảo hành</p>
+                        <p>1 đổi 1 trong ...</p>
+                        <p>nếu xác thực được lỗi thuộc về phía nhà sản xuất</p>
+                        <p>....</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>thong tin cac cua hang mo ban truc
+                            tiep:</h4>
+                            <p>cơ sở 1: địa chỉ ....</p>
+                            <p>cơ sở 2: địa chỉ ....</p>
+                            <p>cơ sở 3: địa chỉ ....</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <h4>liên hệ hỗ trợ qua:</h4>
+                        <p>facebook:........</p>
+                        <p>email:........</p>
+                        <p>zalo:........</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<!-- phần menu none -->
+        <div class="login-form ">
+
+
+            <div class="content-login-form p-5 position-relative">
+                <h2 class="text-center my-3">dang nhap</h2>
+                <button type="button" class="btn btn-login position-absolute
+                    btn-info">close</button>
+                <div class="text-center">
+                    <img class="mx-auto rounded-circle"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRKgUUpHpc-JwcJiRLScAepL-T3oeaxR8T5A&usqp=CAU"
+                        width="30%" alt="img">
+                </div>
+                <form>
+                    <div class="mb-3 mt-3">
+                        <label for="user name" class="form-label">user name:</label>
+                        <input type="user name" class="form-control" id="user
+                            name" placeholder="Enter user name" name="user
+                            name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pwd" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="pwd"
+                            placeholder="Enter password" name="pswd">
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-success px-5" type="button">click</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="register-form ">
+            <div class="content-register-form p-5 position-relative">
+                <h2 class="text-center my-3">register</h2>
+                <button type="button" class="btn btn-register position-absolute
+                    btn-info">close</button>
+                <div class="text-center">
+                    <img class="mx-auto rounded-circle"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRKgUUpHpc-JwcJiRLScAepL-T3oeaxR8T5A&usqp=CAU"
+                        width="30%" alt="img">
+                </div>
+                <form>
+                    <div class="mb-3 mt-3">
+                        <label for="user name2" class="form-label">user name:</label>
+                        <input type="user name" class="form-control" id="user
+                            name2" placeholder="Enter user name" name="user
+                            name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pwd2" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="pwd2"
+                            placeholder="Enter password" name="pswd2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pwd3" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="pwd3"
+                            placeholder="Enter password" name="pswd3">
+                    </div>
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-success px-5" type="button">click</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div  class="gio-hang">
+            <div class="container content-giohang p-5 position-relative">
+                <button class="button-giohang btn btn-success position-absolute m-3" type="button">close</button>
+                <h2>giỏ hàng</h2>
+                <hr>
+                <div class="row m-0">
+                    <div class="col-5"><p class="text-center">sản phẩm</p><hr></div>
+                    <div class="col-3"><p class="text-center">giá</p><hr></div>
+                    <div class="col-4"><p class="text-center">số lượng</p><hr></div>
+                </div>
+
+
+                <div class="row m-0 align-items-center">
+                    <div class="col-5">
+                        <div class="navbar align-items-center
+                            justify-content-center">
+                            <img
+                                src="https://cdn.tgdd.vn/Products/Images/42/250259/iphone-13-pro-silver-600x600.jpg"
+                                alt="anh" width="20%">
+                            <p class="ms-3">mo ta san pam</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="navbar justify-content-center">
+                            <p>20000d</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="navbar align-items-center
+                            justify-content-around">
+                            <div>1</div>
+                            <button class="btn btn-info">xoa</button>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+
+
+                <div class="row m-0 align-items-center">
+                    <div class="col-5">
+                        <div class="navbar align-items-center
+                            justify-content-center">
+                            <img
+                                src="https://cdn.tgdd.vn/Products/Images/42/250259/iphone-13-pro-silver-600x600.jpg"
+                                alt="anh" width="20%">
+                            <p class="ms-3">mo ta san pam</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="navbar justify-content-center">
+                            <p>20000d</p>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="navbar align-items-center
+                            justify-content-around">
+                            <div>1</div>
+                            <button class="btn btn-info">xoa</button>
+                        </div>
+                    </div>
+                    <hr> 
+                </div>
+                <div class="text-end pe-sm-5 pe-0">
+                    <h2>tong cong:  <span>2</span></h2>
+                </div>
+                <hr>
+                <div class="text-end pe-sm-5 pe-0">
+                    <button type="button" class="btn btn-info mx-2 ">dong</button>
+                    <button type="button" class="btn btn-info mx-2 ">thanh toan</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <script>
+            var nam3 = document.querySelector('.gio-hang')
+function giohang(){
+    document.querySelector('.button-giohang').onclick=()=>{
+        nam3.style.display='none'
+    }
+}
+giohang()
+
+
+  var nam = document.querySelector('.login-form')
+    function login1(){
+    var contentnam = document.querySelector('.content-login-form')
+    document.querySelector('.btn-login').onclick=()=>{
+        nam.style.display='none'
+    }
+    }
+    login1()
+
+
+    var nam1 = document.querySelector('.register-form')
+    function register(){
+    var contentnam1 = document.querySelector('.content-register-form')
+    document.querySelector('.btn-register').onclick=()=>{
+        nam1.style.display='none'
+    }   
+    }
+    register()
+
+
+    window.onclick=(event)=>{
+        if(event.target==nam1){
+            nam1.style.display='none'
+        }
+        if(event.target==nam){
+            nam.style.display='none'
+        }
+        if(event.target==nam3){
+            nam3.style.display='none'
+        }
+    }
+</script>
+        <script>
+        var slideindex = 1
+
+
+        showSlides(slideindex)
+        function abc(n) {
+            showSlides(slideindex += n)
+        }
+        function showSlides(index) {
+            let i;
+            var slide = document.getElementsByClassName('myslide')
+            if (index > slide.length) {
+                slideindex = 1
+            }
+            if (index < 1) {
+                slideindex = slide.length
+            }
+            for (i = 0; i < slide.length; i++) {
+                slide[i].style.display = 'none'
+            }
+            slide[slideindex - 1].style.display = 'block'
+        }
+
+        var autoindex = 0
+        carousel()
+        function carousel() {
+            var j;
+            var x = document.getElementsByClassName('myslide')
+            for (j = 0; j < x.length; j++) {
+                x[j].style.display = 'none';
+            }
+            autoindex++
+            if (autoindex > x.length) {
+                autoindex = 1
+            }
+            x[autoindex - 1].style.display = 'block'
+            setTimeout(carousel, 3000)
+        }
+    </script>
+    </body>
+
+</html>
